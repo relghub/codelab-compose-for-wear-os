@@ -15,11 +15,15 @@
  */
 package com.example.android.wearable.composeforwearos
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -28,6 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.wear.compose.material.Button
+import androidx.wear.compose.material.ButtonDefaults
+import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
@@ -41,6 +48,21 @@ fun ButtonExample(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
 ) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Button(
+            modifier = Modifier.size(ButtonDefaults.LargeButtonSize),
+            onClick = { /* ... */ }
+        ) {
+            Icon(
+                imageVector = Icons.Rounded.Phone,
+                contentDescription = "triggers phone action",
+                modifier = iconModifier
+            )
+        }
+    }
 }
 
 // TODO: Create a Text Composable
@@ -97,8 +119,12 @@ fun StartOnlyTextComposablesPreview() {
 fun ButtonExamplePreview() {
     WearAppTheme {
         ButtonExample(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
-            iconModifier = Modifier.size(24.dp).wrapContentSize(align = Alignment.Center),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            iconModifier = Modifier
+                .size(24.dp)
+                .wrapContentSize(align = Alignment.Center),
         )
     }
 }
@@ -109,7 +135,9 @@ fun ButtonExamplePreview() {
 fun TextExamplePreview() {
     WearAppTheme {
         TextExample(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
         )
     }
 }
@@ -120,8 +148,12 @@ fun TextExamplePreview() {
 fun CardExamplePreview() {
     WearAppTheme {
         CardExample(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
-            iconModifier = Modifier.size(24.dp).wrapContentSize(align = Alignment.Center),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            iconModifier = Modifier
+                .size(24.dp)
+                .wrapContentSize(align = Alignment.Center),
         )
     }
 }
@@ -132,8 +164,12 @@ fun CardExamplePreview() {
 fun ChipExamplePreview() {
     WearAppTheme {
         ChipExample(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
-            iconModifier = Modifier.size(24.dp).wrapContentSize(align = Alignment.Center),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            iconModifier = Modifier
+                .size(24.dp)
+                .wrapContentSize(align = Alignment.Center),
         )
     }
 }
@@ -144,7 +180,9 @@ fun ChipExamplePreview() {
 fun ToggleChipExamplePreview() {
     WearAppTheme {
         ToggleChipExample(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
         )
     }
 }
