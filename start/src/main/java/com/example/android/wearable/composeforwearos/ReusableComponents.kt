@@ -23,6 +23,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.rounded.Message
+import androidx.compose.material.icons.rounded.Message
 import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.wear.compose.material.AppCard
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.Icon
@@ -65,17 +68,37 @@ fun ButtonExample(
     }
 }
 
-// TODO: Create a Text Composable
 @Composable
 fun TextExample(modifier: Modifier = Modifier) {
+    Text(
+        modifier = modifier,
+        textAlign = TextAlign.Center,
+        color = MaterialTheme.colors.primary,
+        text = stringResource(R.string.device_shape)
+    )
 }
 
-// TODO: Create a Card (specifically, an AppCard) Composable
 @Composable
 fun CardExample(
     modifier: Modifier = Modifier,
     iconModifier: Modifier = Modifier,
+) { AppCard(
+    modifier = modifier,
+    appImage = {
+        Icon(
+            imageVector = Icons.AutoMirrored.Rounded.Message,
+            contentDescription = "triggers open message action",
+            modifier = iconModifier
+        )
+    },
+    appName = { Text("Повідомлення") },
+    time = { Text("5 хв")},
+    title = { Text("призма")},
+    onClick = { /* */ },
+
 ) {
+    Text("2 файли")
+}
 }
 
 // TODO: Create a Chip Composable
