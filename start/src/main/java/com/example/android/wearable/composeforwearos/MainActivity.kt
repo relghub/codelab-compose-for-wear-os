@@ -38,7 +38,9 @@ import com.example.android.wearable.composeforwearos.theme.WearAppTheme
 import com.google.android.horologist.annotations.ExperimentalHorologistApi
 import com.google.android.horologist.compose.layout.AppScaffold
 import com.google.android.horologist.compose.layout.ScalingLazyColumn
+import com.google.android.horologist.compose.layout.ScalingLazyColumnDefaults
 import com.google.android.horologist.compose.layout.ScreenScaffold
+import com.google.android.horologist.compose.layout.rememberResponsiveColumnState
 
 /**
  * This code lab is meant to help existing Compose developers get up to speed quickly on
@@ -70,30 +72,25 @@ class MainActivity : ComponentActivity() {
 fun WearApp() {
     WearAppTheme {
         /* *************************** Part 4: Wear OS Scaffold *************************** */
-        // TODO (Start): Create a AppScaffold (Wear Version)
-
-        // TODO: Swap to ScalingLazyColumnState
-        val listState = rememberLazyListState()
+        AppScaffold { }
+        val listState = rememberResponsiveColumnState(
+            contentPadding = ScalingLazyColumnDefaults.padding(
+                first = ScalingLazyColumnDefaults.ItemType.SingleButton,
+                last = ScalingLazyColumnDefaults.ItemType.Chip
+            )
+        )
 
         /* *************************** Part 4: Wear OS Scaffold *************************** */
-        // TODO (Start): Create a ScreenScaffold (Wear Version)
-
+        ScreenScaffold(
+            scrollState = listState,
+        ) {}
         // Modifiers used by our Wear composables.
         val contentModifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         val iconModifier = Modifier.size(24.dp).wrapContentSize(align = Alignment.Center)
 
         /* *************************** Part 3: ScalingLazyColumn *************************** */
-        // TODO: Swap a ScalingLazyColumn (Wear's version of LazyColumn)
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(
-                top = 32.dp,
-                start = 8.dp,
-                end = 8.dp,
-                bottom = 32.dp,
-            ),
-            verticalArrangement = Arrangement.Center,
-            state = listState,
+        ScalingLazyColumn(
+            columnState = listState,
         ) {
 
             /* ******************* Part 1: Simple composables ******************* */
@@ -105,10 +102,7 @@ fun WearApp() {
             item { ChipExample(contentModifier, iconModifier) }
             item { ToggleChipExample(contentModifier) }
         }
-
-        // TODO (End): Create a ScreenScaffold (Wear Version)
     }
-    // TODO (End): Create a AppScaffold (Wear Version)
 }
 
 @WearPreviewDevices
